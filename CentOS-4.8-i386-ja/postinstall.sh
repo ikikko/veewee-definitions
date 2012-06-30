@@ -3,6 +3,12 @@
 
 date > /etc/vagrant_box_build_time
 
+#enable repos which is now EOL
+cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.orig
+sed -i "s/^mirrorlist/#mirrorlist/g" /etc/yum.repos.d/CentOS-Base.repo
+sed -i "s/^#baseurl/baseurl/g" /etc/yum.repos.d/CentOS-Base.repo
+sed -i "s/mirror.centos.org\/centos\/\$releasever/vault.centos.org\/4.9/g" /etc/yum.repos.d/CentOS-Base.repo
+
 yum -y install gcc bzip2 make kernel-devel-`uname -r`
 
 #yum -y update
