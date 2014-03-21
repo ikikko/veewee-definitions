@@ -20,6 +20,21 @@ yum -y erase  gtk2 libX11 hicolor-icon-theme avahi freetype bitstream-vera-fonts
 
 yum -y clean all
 
+# Update sudo
+wget ftp://ftp.sudo.ws/pub/sudo/sudo-1.8.10p2.tar.gz
+tar xzvf sudo-1.8.10p2.tar.gz
+cd sudo-1.8.10p2
+./configure
+make
+make install
+cd ..
+cp /etc/sudoers /tmp/sudoers
+echo "vagrant ALL=(ALL:ALL) NOPASSWD:ALL"  >> /tmp/sudoers
+rm -rf sudo-1.8.10p2
+rm sudo-1.8.10p2.tar.gz
+yum -y erase sudo
+mv /tmp/sudoers /etc/sudoers
+
 #Installing ruby
 wget http://rubyforge.org/frs/download.php/71096/ruby-enterprise-1.8.7-2010.02.tar.gz
 tar xzvf ruby-enterprise-1.8.7-2010.02.tar.gz
