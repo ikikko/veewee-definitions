@@ -36,16 +36,20 @@ yum -y erase sudo
 mv /tmp/sudoers /etc/sudoers
 
 #Installing ruby
-wget http://rubyforge.org/frs/download.php/71096/ruby-enterprise-1.8.7-2010.02.tar.gz
-tar xzvf ruby-enterprise-1.8.7-2010.02.tar.gz
-./ruby-enterprise-1.8.7-2010.02/installer -a /opt/ruby --no-dev-docs --dont-install-useful-gems
+wget ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p545.tar.gz
+tar xzvf ruby-1.9.3-p545.tar.gz
+cd ruby-1.9.3-p545
+./configure --exec-prefix=/opt/ruby --disable-install-doc --disable-rubygems
+make
+make install
+cd ..
 echo 'PATH=$PATH:/opt/ruby/bin'> /etc/profile.d/rubyenterprise.sh
-rm -rf ./ruby-enterprise-1.8.7-2010.02/
-rm ruby-enterprise-1.8.7-2010.02.tar.gz
+rm -rf ./ruby-1.9.3-p545/
+rm ruby-1.9.3-p545.tar.gz
 
 #Installing chef & Puppet
-/opt/ruby/bin/gem install chef --no-ri --no-rdoc
-/opt/ruby/bin/gem install puppet --no-ri --no-rdoc
+#/opt/ruby/bin/gem install chef --no-ri --no-rdoc
+#/opt/ruby/bin/gem install puppet --no-ri --no-rdoc
 
 #Installing vagrant keys
 mkdir /home/vagrant/.ssh
