@@ -11,7 +11,7 @@ sed -i "s/mirror.centos.org\/centos\/\$releasever/vault.centos.org\/4.9/g" /etc/
 
 yum -y install gcc bzip2 make kernel-devel-`uname -r`
 
-#yum -y update
+yum -y update
 #yum -y upgrade
 
 yum -y install gcc-c++ zlib-devel openssl-devel readline-devel sqlite3-devel
