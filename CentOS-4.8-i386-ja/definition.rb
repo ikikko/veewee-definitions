@@ -1,6 +1,6 @@
 Veewee::Definition.declare({
-  :cpu_count => '1', :memory_size=> '512',
-  :disk_size => '10140', :disk_format => 'VDI',:hostiocache => 'off',:ioapic => 'on', :pae => 'on',
+  :cpu_count => '1', :memory_size=> '2048',
+  :disk_size => '40560', :disk_format => 'VDI',:hostiocache => 'off',:ioapic => 'on', :pae => 'on',
   :os_type_id => 'RedHat',
   :iso_file => "CentOS-4.8-i386-bin-DVD.iso", :iso_src => "", :iso_md5 => "", :iso_download_timeout => 1000,
   :iso_download_instructions => "This iso is no more available, for instructions see http://vault.centos.org/4.8/isos/i386/",
